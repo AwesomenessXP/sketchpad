@@ -35,6 +35,25 @@ let screen = document.querySelector("#screen"); // screen that will be used when
 
 //--------------- EVENTS FOR THE CANVAS ---------------------------------------------------------
 
+// event listener for normal mode button
+normalModeBtn.addEventListener('click', function normalMode() {
+    canvas.addEventListener('mousedown', () => {
+        screen.style.display = "none";
+        cellHover.forEach((itemCell) => {
+            itemCell.addEventListener('mouseover', function(e) {
+                e.target.style.backgroundColor = "black";
+            });
+            itemCell.addEventListener('mouseout', function(e) {
+                e.target.style.backgroundColor = "black";
+            });
+        });
+    });
+    
+    canvas.addEventListener('mouseup', () => {
+        screen.style.display = "block";
+    });
+});
+
 // event listener for ghost mode button
 ghostModeBtn.addEventListener('click', function ghostMode() {
     canvas.addEventListener('mousedown', () => {
@@ -48,25 +67,6 @@ ghostModeBtn.addEventListener('click', function ghostMode() {
             itemCell.addEventListener('mouseout', function(e) {
                 e.target.style.backgroundColor = null;
                 e.target.style.transition = "background-color 1s linear";
-            });
-        });
-    });
-    
-    canvas.addEventListener('mouseup', () => {
-        screen.style.display = "block";
-    });
-});
-
-// event listener for normal mode button
-normalModeBtn.addEventListener('click', function normalMode() {
-    canvas.addEventListener('mousedown', () => {
-        screen.style.display = "none";
-        cellHover.forEach((itemCell) => {
-            itemCell.addEventListener('mouseover', function(e) {
-                e.target.style.backgroundColor = "black";
-            });
-            itemCell.addEventListener('mouseout', function(e) {
-                e.target.style.backgroundColor = "black";
             });
         });
     });
