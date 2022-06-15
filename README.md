@@ -1,5 +1,5 @@
 # Sketch Pad
-- Practicing more about JS and DOM
+- Practicing more about JS and DOM by making a [sketch pad](https://awesomenessxp.github.io/sketchpad/).
 # Challenges
 ## Creating a user-inputted grid
 - used JS to dynamically make divs and appended them as children of the main container
