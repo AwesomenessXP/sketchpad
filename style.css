@@ -23,7 +23,7 @@ header {
     letter-spacing: 1px;
 }
 
-#container-2 {
+.flex-container {
     display: flex;
     position: relative;
     height: 50px;
@@ -37,7 +37,7 @@ header {
     margin-right: 15px;
 }
 
-button {
+button, #text {
     font-family: 'Mulish', sans-serif;
     font-weight: bold;
 }
@@ -50,5 +50,9 @@ button {
 }
 
 #cell-count {
-    margin-top: 1.2em;
+    margin-top: 1.5em;
+}
+
+#text {
+    margin-left: 1em;
 }

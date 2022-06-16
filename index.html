@@ -19,13 +19,16 @@
         <div id="container-1">
             <div id="screen"></div>
         </div>
-        <div id="container-2">
+        <div id="container-2" class="flex-container">
             <button id="normal-mode">Monochrome mode</button>
             <button id="ghost-mode">Ghost mode</button>
             <button id="rainbow-mode">RGB mode</button>
+        </div>
+        <div id="container-3" class="flex-container">
             <div id="range-slider">
                 <input type="range" min="1" max="64" value="32" id="cell-count">
             </div>
+            <p id="text">Grid size: 32x32</p>
         </div>
 
         <script src="index.js" async defer></script>
