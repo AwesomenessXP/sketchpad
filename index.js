@@ -2,7 +2,7 @@
 const grid = document.getElementById('container-1'); 
 grid.style.flexDirection = "row";
 let screen = document.querySelector("#screen"); // screen that will be used when mouse is released
-
+let cellHover;
 let cellSlider = document.getElementById("cell-count"); // drawing pad will be gridCellNum * gridCellNum
 // ------------------- PREPARE THE GRID ---------------------------------------------------------
 
@@ -27,6 +27,8 @@ for (let j = 0; j < 32; j++) { // creating n number of columns
     
     grid.appendChild(gridColumn);
 }// for
+
+cellHover = document.querySelectorAll(".cell"); // all of the cells in our grid
 
 // ADJUST THE SIZE OF CELLS
 cellSlider.oninput = function() {
@@ -59,10 +61,11 @@ cellSlider.oninput = function() {
         
         grid.appendChild(gridColumn);
     }// for
+
+    cellHover = document.querySelectorAll(".cell"); // all of the cells in our grid
 }
 
 // these are the divs that will update/change on user's screen
-let cellHover = document.querySelectorAll(".cell"); // all of the cells in our grid
 let normalModeBtn = document.querySelector('#normal-mode'); // button for normal mode
 let ghostModeBtn = document.querySelector("#ghost-mode"); // button for ghost mode
 let rbgModeBtn = document.querySelector('#rainbow-mode');
