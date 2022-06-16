@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    background-color: rgb(13,17,23);
 }
 
 header {
@@ -13,10 +14,12 @@ header {
     margin: auto;
     width: 480px;
     justify-self: center;
-    border: 4px solid black;
+    border: 4px solid white;
+    border-radius: 4px;
 }
 
 #title {
+    color: white;
     text-align: center;
     font-family: 'Mulish', sans-serif;
     font-size: 3em;
@@ -35,11 +38,21 @@ header {
 #container-2 button {
     margin-left: 15px;
     margin-right: 15px;
+    border-radius: 8px;
+    border: 1px solid grey;
+    background-color: rgb(13,17,23);;
 }
 
 button, #text {
+    color: white;
     font-family: 'Mulish', sans-serif;
     font-weight: bold;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: transform 0.2s ease-out;
 }
 
 #screen {
@@ -54,5 +67,6 @@ button, #text {
 }
 
 #text {
+    color: white;
     margin-left: 1em;
 }

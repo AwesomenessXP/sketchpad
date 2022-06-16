@@ -66,8 +66,7 @@ function createGrid (size) {
     grid.appendChild(screen);
 
     // update text on screen
-    const gridSizeText = document.getElementById("text");
-    gridSizeText.textContent = `Grid size: ${cellSize}x${cellSize}`; 
+    document.getElementById("text").textContent = `Grid size: ${size}x${size}`; 
 
     // create the new grid
     for (let j = 0; j < size; j++) { // creating n number of columns
@@ -99,11 +98,11 @@ function normalMode() {
     screen.style.display = "none"; // hide the screen 
     allCells.forEach((cell) => { 
         cell.addEventListener('mouseover', function(e) {
-            e.target.style.backgroundColor = "black";
+            e.target.style.backgroundColor = "white";
         }); // cell mouseover event
 
         cell.addEventListener('mouseout', function(e) {
-            e.target.style.backgroundColor = "black";
+            e.target.style.backgroundColor = "white";
         });// cell mouseout event
     });// allCells forEach item
 }// normalMode()
@@ -112,7 +111,7 @@ function ghostMode() {
     screen.style.display = "none"; // hide the screen 
     allCells.forEach((cell) => {
         cell.addEventListener('mouseover', function(e) {
-            isMonochrome ? e.target.style.backgroundColor = "black" : e.target.style.backgroundColor = randomColor;
+            isMonochrome ? e.target.style.backgroundColor = "white" : e.target.style.backgroundColor = randomColor;
             e.target.style.transition = "background-color 0s linear"; // resets any transitions made previously
         });// cell mouseover event
     
