@@ -48,3 +48,7 @@ button {
     width: 480px;
     display: none;
 }
+
+#cell-count {
+    margin-top: 1.2em;
+}
