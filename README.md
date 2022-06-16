@@ -22,7 +22,14 @@
 - fixed an issue where if a user hovers over a cell that is filled in, it will not update
     - I reset the transition state of the cells during mouseover
 
+## Canvas Size Slider
+- used .oninput() in JS to update the value of an html slider
+- set an initial grid of 32x32, but when .oninput() is called, it deletes child (a column) in a loop
+    then appends a new child (new column) to the container in a nested for-loop
+- had issue where the cursor wouldn't draw anything after adjusting size
+    - fixed this when i set cellHover = document.querySelectorAll(".cell") in functions that used the grid cells to update          CURRENT number of cells present
+
 # Features to implement
 - implement user-inputted size with a sliding bar
 - rainbow mode
-- rainbow ghost mode?
+- rainbow ghost mode
