@@ -29,7 +29,7 @@ header {
 .flex-container {
     display: flex;
     position: relative;
-    height: 50px;
+    height: 35px;
     width: auto;
     justify-content: center;
     margin-top: 10px;
@@ -89,4 +89,8 @@ button:hover {
 #checkbox {
     margin-top: 1.5em;
     margin-left: 8px;
+}
+
+#container-3 div{
+    margin-top: -10px;
 }

@@ -2,15 +2,17 @@
 
 // this is the container that will contain the grids
 const grid = document.getElementById('container-1'); 
-let screen;
-let allCells;
+let screen; // not constant because screen can be deleted/created
+let allCells; // not constant because cells can be deleted/created
 const cellSlider = document.getElementById("cell-count"); // drawing pad will be gridCellNum * gridCellNum
 const checkBox = document.getElementById("checkbox");
+let cellSize = 0;
 
 // these are the divs that will update/change on user's screen
 const normalModeBtn = document.querySelector('#normal-mode'); // button for normal mode
 const ghostModeBtn = document.querySelector("#ghost-mode"); // button for ghost mode
 const rbgModeBtn = document.querySelector('#rainbow-mode');
+const clearBtn = document.querySelector('#clear-grid');
 
 // initialize color to monochrome
 let isMonochrome; // bool that checks if the current color is in monochrome mode or rgb mode
@@ -24,13 +26,10 @@ let showGrid;
 // THIS IS OUR MAIN FUNCTION, RUN IT ON START UP
 window.addEventListener('load', () => {
     // initialize screen and grid
-    grid.style.flexDirection = "row";
-    screen = document.querySelector("#screen"); // screen that will be used when mouse is released
     cellSize = 32;
     showGrid = true;
-    createGrid(cellSize);
-    allCells = document.querySelectorAll(".cell"); // all of the cells in our grid
     isMonochrome = true; // on startup, the default color is black;
+    renderNewCanvas();
 });// window.onload()
 
 // ADJUST THE SIZE OF CELLS
@@ -44,7 +43,6 @@ cellSlider.addEventListener('input', () => {
 normalModeBtn.addEventListener('click', () => {
     isMonochrome = true;
     grid.addEventListener('mousedown', () => normalMode()); // mouseup
-    grid.removeEventListener('mousedown', ghostMode);
     grid.addEventListener('mouseup', () => screen.style.display = "block"); // mouseup
 });// normal button event
 
@@ -65,12 +63,26 @@ rbgModeBtn.addEventListener('click', () => {
 checkBox.addEventListener('click', () => {
     showGrid ? allCells.forEach((cell) => cell.style.border = "none") : allCells.forEach((cell) => cell.style.border = "1px solid rgba(255, 255, 255, 0.685)");
     showGrid = !showGrid; // negate the bool
-});// checkBox.onclick()
+});// checkBox event
+
+// event listener for clearing the grid 
+clearBtn.addEventListener('click', () => {
+    renderNewCanvas ();
+});// clearBtn event
 
 // ------------------------------ DEFINE FUNCTIONS  --------------------------------------------------------------------------------
 
+function renderNewCanvas () {
+    deleteGrid();
+    grid.style.flexDirection = "row";
+    screen = document.querySelector("#screen"); // screen that will be used when mouse is released
+    createGrid(cellSize);
+    allCells = document.querySelectorAll(".cell"); // all of the cells in our grid
+} //renderNewCanvas()
+
 function createGrid (size) {
     // create new screen
+    cellSize = size;
     screen = document.createElement('div');
     screen.id = "screen";
     grid.appendChild(screen);
