@@ -27,10 +27,10 @@ window.addEventListener('load', () => {
     grid.style.flexDirection = "row";
     screen = document.querySelector("#screen"); // screen that will be used when mouse is released
     cellSize = 32;
+    showGrid = true;
     createGrid(cellSize);
     allCells = document.querySelectorAll(".cell"); // all of the cells in our grid
     isMonochrome = true; // on startup, the default color is black;
-    showGrid = true;
 });// window.onload()
 
 // ADJUST THE SIZE OF CELLS
@@ -44,6 +44,7 @@ cellSlider.addEventListener('input', () => {
 normalModeBtn.addEventListener('click', () => {
     isMonochrome = true;
     grid.addEventListener('mousedown', () => normalMode()); // mouseup
+    grid.removeEventListener('mousedown', ghostMode);
     grid.addEventListener('mouseup', () => screen.style.display = "block"); // mouseup
 });// normal button event
 
@@ -88,6 +89,7 @@ function createGrid (size) {
             const gridCell = document.createElement('div');
             gridCell.id = `row-${i+1}`; // individually label the row cell with an ID
             gridCell.classList.add("cell");
+            showGrid ? gridCell.style.border = "1px solid rgba(255, 255, 255, 0.685)" : gridCell.style.border = "none";
             gridColumn.appendChild(gridCell);
         }// for
         
