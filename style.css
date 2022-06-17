@@ -43,7 +43,7 @@ header {
     background-color: rgb(13,17,23);;
 }
 
-button, #text {
+button, #text, #checkbox-text {
     color: white;
     font-family: 'Mulish', sans-serif;
     font-weight: bold;
@@ -66,7 +66,27 @@ button:hover {
     margin-top: 1.5em;
 }
 
+.cell {
+    display: flex;
+    flex: 1 1 auto;
+    border: 1px solid rgba(255, 255, 255, 0.685);
+}
+
+.column {
+    display: flex;
+    flex: 1 1 auto;
+}
+
 #text {
     color: white;
     margin-left: 1em;
+}
+
+#checkbox-text-container {
+    margin-left: 70px;
+}
+
+#checkbox {
+    margin-top: 1.5em;
+    margin-left: 8px;
 }

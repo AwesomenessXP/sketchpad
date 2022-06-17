@@ -5,6 +5,7 @@ const grid = document.getElementById('container-1');
 let screen;
 let allCells;
 const cellSlider = document.getElementById("cell-count"); // drawing pad will be gridCellNum * gridCellNum
+const checkBox = document.getElementById("checkbox");
 
 // these are the divs that will update/change on user's screen
 let normalModeBtn = document.querySelector('#normal-mode'); // button for normal mode
@@ -14,6 +15,9 @@ let rbgModeBtn = document.querySelector('#rainbow-mode');
 // initialize color to monochrome
 let isMonochrome; // bool that checks if the current color is in monochrome mode or rgb mode
 let randomColor; // value of some random color
+
+// toggle grid visibility
+let showGrid;
 
 // ----------------------- PREPARE THE GRID -------------------------------------------------------------------------------------
 
@@ -26,6 +30,7 @@ window.onload = () => {
     createGrid(cellSize);
     allCells = document.querySelectorAll(".cell"); // all of the cells in our grid
     isMonochrome = true; // on startup, the default color is black;
+    showGrid = true;
 };// window.onload()
 
 // ADJUST THE SIZE OF CELLS
@@ -57,6 +62,12 @@ rbgModeBtn.addEventListener('click', () => {
     grid.addEventListener('mouseup', () => screen.style.display = "block");// 
 });// ghost mode button event
 
+// event listener for check box
+checkBox.addEventListener('click', () => {
+    showGrid ? allCells.forEach((cell) => cell.style.border = "none") : allCells.forEach((cell) => cell.style.border = "1px solid rgba(255, 255, 255, 0.685)")
+    showGrid = !showGrid; // negate the bool
+});// checkBox.onclick()
+
 // ------------------------------ DEFINE FUNCTIONS  --------------------------------------------------------------------------------
 
 function createGrid (size) {
@@ -72,14 +83,12 @@ function createGrid (size) {
     for (let j = 0; j < size; j++) { // creating n number of columns
         const gridColumn = document.createElement('div'); 
         gridColumn.id = `column-${j+1}`; // individually label the column cell with an ID
-        gridColumn.style.display = "flex";
-        gridColumn.style.flex = '1 1 auto'; // height and width will automatically adjust
+        gridColumn.classList.add("column");
         gridColumn.style.flexDirection = "column";
         
         for (let i = 0; i < size; i++) { // creating n number of rows
             const gridCell = document.createElement('div');
             gridCell.id = `row-${i+1}`; // individually label the row cell with an ID
-            gridCell.style.flex = '1 1 auto'; // height and width will automatically adjust
             gridCell.classList.add("cell");
             gridColumn.appendChild(gridCell);
         }// for
